@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: efs-back-tomcat-pv
+  namespace: back-end
+
+spec:
+  capacity:
+    storage: 5Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: efs-back-tomcat-stgc
+  csi:
+    driver: efs.csi.aws.com
+    volumeHandle: fs-0c8aba126685e303f

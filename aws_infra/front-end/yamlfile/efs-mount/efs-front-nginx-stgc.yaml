@@ -1,0 +1,6 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: efs-front-nginx-stgc
+  namespace: front-end
+provisioner: efs.csi.aws.com

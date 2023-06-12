@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: front-nginx-deploy
+  name: front-nginx-deploy
+  namespace: front-end
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: front-nginx-deploy
+  template:
+    metadata:
+      labels:
+        app: front-nginx-deploy
+    spec:
+      containers:
+      - image: public.ecr.aws/e6m3e0t8/h1998yc:nginx_v3.0
+        name: nginx
+        volumeMounts:
+        - name: efs-front-storage
+          mountPath: /var/www/html/front-end
+      volumes:
+      - name: efs-front-storage
+        persistentVolumeClaim:
+          claimName: efs-front-nginx-pvc

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: efs-front-nginx-pvc
+  namespace: front-end
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: efs-front-nginx-stgc
+  resources:
+    requests:
+      storage: 5Gi
