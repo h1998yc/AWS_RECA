@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: test-hpa-back-tomcat
+  name: test-hpa-back-tomcat
+  namespace: test-hpa-backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: test-hpa-back-tomcat
+  template:
+    metadata:
+      labels:
+        app: test-hpa-back-tomcat
+    spec:
+      containers:
+      - image: public.ecr.aws/e6m3e0t8/h1998yc:tomcat_redis3
+        name: h1998yc
+        resources:
+          requests:
+            cpu: 250m
+          limits:
+            cpu: 500m

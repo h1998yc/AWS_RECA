@@ -1,0 +1,13 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: back-end-tomcat-hpa
+  namespace: back-end
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: back-tomcat-deploy
+  minReplicas: 3
+  maxReplicas: 6
+  targetCPUUtilizationPercentage: 50

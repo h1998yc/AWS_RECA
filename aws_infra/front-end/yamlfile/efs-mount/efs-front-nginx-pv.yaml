@@ -13,4 +13,4 @@ spec:
   storageClassName: efs-front-nginx-stgc
   csi:
     driver: efs.csi.aws.com
-    volumeHandle: fs-0b068d85a87ee5de4
+    volumeHandle: fs-01d2947fba2fde806

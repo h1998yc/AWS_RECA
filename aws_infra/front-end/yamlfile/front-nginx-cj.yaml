@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: front-nginx-cj
+  namespace: front-end
+spec:
+  jobTemplate:
+    metadata:
+      name: front-nginx-cj
+    spec:
+      template:
+        metadata:
+          labels:
+            app: front-nginx-deploy
+        spec:
+          containers:
+          - image: public.ecr.aws/e6m3e0t8/h1998yc:nginx_v3.4
+            name: front-nginx-cj
+          restartPolicy: OnFailure
+  schedule: '*/12 * * * *'

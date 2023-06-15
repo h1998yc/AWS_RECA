@@ -16,17 +16,17 @@ spec:
         app: back-tomcat-deploy
     spec:
       containers:
-      - image: public.ecr.aws/e6m3e0t8/h1998yc:tomcat_v2.9
+      - image: public.ecr.aws/e6m3e0t8/h1998yc:tomcat_redis3
         name: tomcat
-			  volumeMounts:
+        resources:
+          requests:
+            cpu: 250m
+          limits:
+            cpu: 500m
+        volumeMounts:
         - name: efs-back-storage
           mountPath: /usr/local/tomcat/webapps/ROOT/back-end
       volumes:
       - name: efs-back-storage
         persistentVolumeClaim:
           claimName: efs-back-tomcat-pvc
-        resources:
-          requests:
-            cpu: 250m
-          limits:
-            cpu: 500m

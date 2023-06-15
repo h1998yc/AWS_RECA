@@ -16,7 +16,7 @@ spec:
         app: front-nginx-deploy
     spec:
       containers:
-      - image: public.ecr.aws/e6m3e0t8/h1998yc:nginx_v3.0
+      - image: public.ecr.aws/e6m3e0t8/h1998yc:nginx_v3.4
         name: nginx
         volumeMounts:
         - name: efs-front-storage
@@ -25,3 +25,4 @@ spec:
       - name: efs-front-storage
         persistentVolumeClaim:
           claimName: efs-front-nginx-pvc
+      
